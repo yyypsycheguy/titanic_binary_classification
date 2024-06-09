@@ -2,8 +2,9 @@ bin
 include
 lib/python3.11
 titanic2
-correlation_matrix.png
 lib
 pyvenv.cfg
 confusion_matrix.png
 loss_acc.png
+correlation_matrix.png
+processed_data.csv
