@@ -1,5 +1,5 @@
 import tensorflow as tf
-'''from tensorflow import keras
+from tensorflow import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.losses import BinaryCrossentropy
@@ -7,7 +7,7 @@ from tensorflow.keras.optimizers import adam_v2
 from tensorflow.keras.metrics import BinaryAccuracy
 from tensorflow.keras.layers import Dense, Input
 from tensorflow.keras import Sequential
-from tensorflow.keras.activations import sigmoid'''
+from tensorflow.keras.activations import sigmoid
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import pandas as pd
@@ -37,7 +37,7 @@ y_test = tf.convert_to_tensor(y_test)
 
 # model implementation
 # structure
-model = Sequential()
+model = keras.models.Sequential()
 model.add(Dense(7, input_dim= 12, activation="relu"))
 model.add(Dense(1,activation="sigmoid"))
 
