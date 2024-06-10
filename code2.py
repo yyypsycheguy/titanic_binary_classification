@@ -18,8 +18,7 @@ print('\n')
 #Task 2: Data Preprocessing
 #1.Convert categorical variables (Sex and Embarked) into numerical values.
 
-# Convert 'Sex' column to numerical values manually
-'''titanic_df['Sex'] = titanic_df['Sex'].apply(lambda x: 1 if x == 'female' else 0)'''
+# Convert 'Sex' column to numerical values by one-hot-encoding
 one_hot = OneHotEncoder()
 encoded = one_hot.fit_transform(titanic_df[["Sex"]])
 encoded_array = encoded.toarray()
@@ -30,8 +29,6 @@ print("Sex encoded dataframe:")
 print(titanic_df.head())
 
 #2.Handle missing values in the Age, Fare, and Embarked columns by filling them with median values.
-# Convert 'Embarked' column to dummy variables
-
 # Fill missing values with median values before converting 'Embarked' to dummy variables
 if not titanic_df['Age'].dropna().empty:
     age_median = titanic_df['Age'].median()
@@ -45,7 +42,7 @@ if not titanic_df['Embarked'].dropna().empty:
     embarked_mode = titanic_df['Embarked'].mode()[0]
     titanic_df['Embarked'] = titanic_df['Embarked'].fillna(embarked_mode)
 
-# Use on-hot-encoding on non-numerical values
+# Use on-hot-encoding into non-numerical values
 one_hot = OneHotEncoder()
 encoded = one_hot.fit_transform(titanic_df[["Embarked"]])
 encoded_array = encoded.toarray()
@@ -73,16 +70,3 @@ plt.savefig("correlation_matrix.png")
 plt.show()
 
 titanic_df.to_csv("processed_data.csv")
-
-'''#Task 4: Building the Neural Network
-#1. Split the dataset into training and testing sets
-
-X = titanic_df.drop(columns=['Survived'])
-y = titanic_df['Survived']
-
-split_index = int(0.8 * len(X))  # 80% for training, (80/20) choosing 80% of the data for training and 20% for testing is a common practice in machine learning
-X_train, X_test = X[:split_index], X[split_index:]
-y_train, y_test = y[:split_index], y[split_index:]
-
-print("Training set shape:", X_train.shape)
-print("Testing set shape:", X_test.shape)'''
